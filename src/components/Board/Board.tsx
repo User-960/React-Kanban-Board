@@ -6,6 +6,9 @@ export default function Board() {
   return (
     <div className={css.board}>
       <Column name={'BACKLOG'} />
+      <Column name={'IN PROGRESS'} />
+      <Column name={'READY'} />
+      <Column name={'FINISHED'} />
     </div>
   )
 };

@@ -1,4 +1,5 @@
 import React from 'react';
+import Scrollbars from 'react-custom-scrollbars-2';
 import Card from './Card/Card';
 import css from './Column.module.scss';
 
@@ -12,9 +13,22 @@ export default function Column({ name }: IColumnProps) {
       <div className={css.header}>{name}</div>
       <div className={css.wrapper}>
         <div className={css.body}>
-          <Card />
-          <Card />
-          <Card />
+          <Scrollbars autoHeight autoHeightMax={500}>
+            <Card name={'name'} />
+            <Card name={'name'} />
+            <Card name={'name'} />
+            <Card name={'name'} />
+            <Card name={'name'} />
+            <Card name={'name'} />
+            <Card name={'name'} />
+            <Card name={'name'} />
+            <Card name={'name'} />
+            <Card name={'name'} />
+          </Scrollbars>
+        </div>
+        <div className={css.footer}>
+          <button>+</button>
+          Add card
         </div>
       </div>
     </div>

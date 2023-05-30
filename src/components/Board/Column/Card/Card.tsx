@@ -1,9 +1,14 @@
 import React from 'react';
+import css from './Card.module.scss';
 
-export default function Card() {
+interface ICardProps {
+  name: string
+};
+
+export default function Card({ name }: ICardProps) {
   return (
-    <div>
-      Card
+    <div className={css.card}>
+      <span>{name}</span>
     </div>
   )
 };
