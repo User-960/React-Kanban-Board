@@ -1,10 +1,11 @@
 import React from 'react'
-import Column from './Column/Column'
+import Column from './Column/Column';
+import css from './Board.module.scss';
 
 export default function Board() {
   return (
-    <div>
+    <div className={css.board}>
       <Column />
     </div>
   )
-}
+};
