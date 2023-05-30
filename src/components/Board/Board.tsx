@@ -5,7 +5,7 @@ import css from './Board.module.scss';
 export default function Board() {
   return (
     <div className={css.board}>
-      <Column />
+      <Column name={'BACKLOG'} />
     </div>
   )
 };
