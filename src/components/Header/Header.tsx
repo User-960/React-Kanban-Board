@@ -4,7 +4,7 @@ import css from './Header.module.scss';
 export default function Header() {
   return (
     <header className={css.header}>
-      Header
+      <h1>Kanban Board</h1>
     </header>
   )
 };
