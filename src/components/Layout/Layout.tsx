@@ -1,4 +1,5 @@
 import React from 'react';
+import { TaskProvaider } from '../../hooks/tasks/taskProvaider';
 import css from './Layout.module.scss';
 
 interface ILayoutProps {
@@ -7,8 +8,10 @@ interface ILayoutProps {
 
 export default function Layout({ children }: ILayoutProps) {
   return (
-    <div className={css.layout}>
-      {children}
-    </div>
+    <TaskProvaider>
+      <div className={css.layout}>
+        {children}
+      </div>
+    </TaskProvaider>
   )
 }
