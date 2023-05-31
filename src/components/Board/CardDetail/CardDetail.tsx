@@ -4,6 +4,7 @@ import { useTasks } from '../../../hooks/tasks/useTasks';
 import { ITask } from '../../../models/models';
 import Button from '../../Shared/buttons/Button';
 import { GlobalSvgSelector } from '../../Shared/icons/GlobalSvgSelector';
+import css from './Card.module.scss';
 
 export default function CardDetail() {
   const navigate = useNavigate();
@@ -21,10 +22,11 @@ export default function CardDetail() {
   const navigateBack = () => navigate(-1);
 
   return (
-    <div>
+    <div className={css.card}>
       {task &&
-        <div>
+        <div className={css.body}>
           <textarea
+            className={css.name}
             value={task.name}
             onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) => {
               setTask({
@@ -35,6 +37,7 @@ export default function CardDetail() {
           />
 
           <textarea
+            className={css.description}
             value={task.description}
             onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) => {
               setTask({
@@ -46,15 +49,17 @@ export default function CardDetail() {
         </div>
       }
 
-      <Button className={'button-close'} onClick={navigateBack}>
+      <Button className={css['button-close']} onClick={navigateBack}>
         <GlobalSvgSelector id='close' />
       </Button>
 
       <div>
-        <button onClick={() => {
-          updateTask(task);
-          navigateBack();
-        }}>Save Card</button>
+        <button
+          className={css['button-save']}
+          onClick={() => {
+            updateTask(task);
+            navigateBack();
+          }}>Save Card</button>
       </div>
     </div >
   )

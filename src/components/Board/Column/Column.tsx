@@ -46,8 +46,7 @@ export default function Column({ name, state }: IColumnProps) {
 
         </div>
         <div className={css.footer}>
-          <button>+</button>
-          Add card
+          <button className={css['button-add']}>+ Add card</button>
         </div>
       </div>
     </div>
