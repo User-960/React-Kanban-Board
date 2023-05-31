@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { ITask, IState } from "../../models/models";
 import { TaskContext } from "./taskContext";
 
@@ -9,6 +9,7 @@ interface ITaskProvaiderProps {
 export const TaskProvaider = ({ children }: ITaskProvaiderProps) => {
   const [tasks, setTasks] = useState<ITask[]>([]);
   const [isLoaded, setIsLoaded] = useState<boolean>(false);
+  const [idCounter, setIdCounter] = useState<number>(0);
 
   const [states] = useState<IState[]>([
     { id: 1, name: 'backlog', state: 'backlog' },
@@ -19,15 +20,31 @@ export const TaskProvaider = ({ children }: ITaskProvaiderProps) => {
 
   const findById = (id: number) => tasks.find((task) => task.id === id);
 
+  useEffect(() => {
+    if (isLoaded) {
+      localStorage.setItem('tasks', JSON.stringify(tasks));
+    }
+  }, [tasks, isLoaded]);
+
+  useEffect(() => {
+    const tasks = localStorage.getItem('tasks');
+    if (tasks) {
+      setTasks(JSON.parse(tasks))
+    }
+    setIsLoaded(true);
+  }, []);
+
   const context = {
     states,
     addTask: (name: string, state: string) => {
+      const id = idCounter + 1
       const task: ITask = {
-        id: tasks.length + 1,
+        id,
         name,
-        state
+        state: 'backlog'
       };
 
+      setIdCounter(id);
       setTasks([...tasks, task]);
     },
     updateTask: (item: ITask) => {
