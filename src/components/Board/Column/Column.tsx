@@ -14,6 +14,9 @@ export default function Column({ name, state }: IColumnProps) {
   const [isNewTaskInputShown, setIsNewTaskInputShown] = useState<boolean>(false);
   const [inputCardName, setInputCardName] = useState<string>('');
 
+  const [isNewTaskSelectShown, setIsNewTaskSelectShown] = useState<boolean>(false);
+  const [selectedTaskId, setSelectedTaskId] = useState(undefined);
+
   const { getTasksByState, getTasksByExcludeState, addTask, movetask, removeTask } = useTasks();
 
   const tasks = getTasksByState(state);
