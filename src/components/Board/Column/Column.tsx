@@ -5,6 +5,7 @@ import css from './Column.module.scss';
 
 interface IColumnProps {
   name: string
+  state: string
 };
 
 export default function Column({ name }: IColumnProps) {
@@ -14,13 +15,6 @@ export default function Column({ name }: IColumnProps) {
       <div className={css.wrapper}>
         <div className={css.body}>
           <Scrollbars autoHeight autoHeightMax={500}>
-            <Card name={'name'} />
-            <Card name={'name'} />
-            <Card name={'name'} />
-            <Card name={'name'} />
-            <Card name={'name'} />
-            <Card name={'name'} />
-            <Card name={'name'} />
             <Card name={'name'} />
             <Card name={'name'} />
             <Card name={'name'} />
