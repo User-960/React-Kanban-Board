@@ -40,12 +40,15 @@ export default function Column({ name, state }: IColumnProps) {
 
           {isNewTaskInputShown &&
             <div>
-              <input onChange={onInputCard} value={inputCardName} type="text" />
+              <input className={css['input-column']} onChange={onInputCard} value={inputCardName} type="text" />
             </div>
           }
 
           {isNewTaskSelectShown &&
-            <select onChange={(e: React.ChangeEvent<HTMLSelectElement>) => setSelectedTaskId(e.target.value)}>
+            <select
+              className={css['select-column']}
+              onChange={(e: React.ChangeEvent<HTMLSelectElement>) => setSelectedTaskId(e.target.value)}>
+
               <option>Select Task</option>
               {getTasksByExcludeState(state).map((task: ITask) =>
                 <option key={task.id} value={task.id}>{task.name}</option>
