@@ -51,7 +51,7 @@ export const TaskProvaider = ({ children }: ITaskProvaiderProps) => {
     getTasksByExcludeState: (state: string) => {
       return tasks.filter(task => task.state !== state);
     },
-    movetask: (id: number, state: string) => {
+    moveTask: (id: number, state: string) => {
       const task = findById(id);
       if (task) {
         task.state = state;

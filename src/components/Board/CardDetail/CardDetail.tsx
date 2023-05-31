@@ -4,7 +4,7 @@ import { useTasks } from '../../../hooks/tasks/useTasks';
 import { ITask } from '../../../models/models';
 import Button from '../../Shared/buttons/Button';
 import { GlobalSvgSelector } from '../../Shared/icons/GlobalSvgSelector';
-import css from './Card.module.scss';
+import css from './CardDetail.module.scss';
 
 export default function CardDetail() {
   const navigate = useNavigate();

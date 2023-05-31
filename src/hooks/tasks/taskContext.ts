@@ -9,7 +9,7 @@ const defaultValue: TTaskContext = {
   getTaskById: () => {},
   getTasksByState: () => {},
   getTasksByExcludeState: () => {},
-  movetask: () => {},
+  moveTask: () => {},
   getActiveTaskCount: () => {},
   getFinishedTaskCount: () => {}
 };

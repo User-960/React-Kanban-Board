@@ -6,7 +6,7 @@ export type TTaskContext = {
   getTaskById: (id: number) => void
   getTasksByState: (state: string) => any
   getTasksByExcludeState: (state: string) => any
-  movetask: (id: number, state: string) => void
+  moveTask: (id: number, state: string) => void
   getActiveTaskCount: () => void
   getFinishedTaskCount: () => void
 };

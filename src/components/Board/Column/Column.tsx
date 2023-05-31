@@ -15,9 +15,9 @@ export default function Column({ name, state }: IColumnProps) {
   const [inputCardName, setInputCardName] = useState<string>('');
 
   const [isNewTaskSelectShown, setIsNewTaskSelectShown] = useState<boolean>(false);
-  const [selectedTaskId, setSelectedTaskId] = useState(undefined);
+  const [selectedTaskId, setSelectedTaskId] = useState<string>('');
 
-  const { getTasksByState, getTasksByExcludeState, addTask, movetask, removeTask } = useTasks();
+  const { getTasksByState, getTasksByExcludeState, addTask, moveTask, removeTask } = useTasks();
 
   const tasks = getTasksByState(state);
   const hasTasks = tasks.length > 0;
@@ -44,11 +44,48 @@ export default function Column({ name, state }: IColumnProps) {
             </div>
           }
 
+          {isNewTaskSelectShown &&
+            <select onChange={(e: React.ChangeEvent<HTMLSelectElement>) => setSelectedTaskId(e.target.value)}>
+              <option>Select Task</option>
+              {getTasksByExcludeState(state).map((task: ITask) =>
+                <option key={task.id} value={task.id}>{task.name}</option>
+              )}
+            </select>
+          }
         </div>
+
         <div className={css.footer}>
-          <button className={css['button-add']}>+ Add card</button>
+          {(!isNewTaskInputShown && !isNewTaskSelectShown) &&
+            <button
+              className={css['button-column']}
+              onClick={() => state === 'backlog' ? setIsNewTaskInputShown(true) : setIsNewTaskSelectShown(true)}
+            >+ Add card</button>
+          }
+
+          {(isNewTaskInputShown || isNewTaskSelectShown) &&
+            <button
+              className={css['button-column']}
+              onClick={() => {
+                if (state === 'backlog') {
+                  setIsNewTaskInputShown(false);
+                  addTask(inputCardName, state);
+                  setInputCardName('');
+                } else {
+                  setIsNewTaskSelectShown(false);
+                  moveTask(parseInt(selectedTaskId), state);
+                }
+              }}
+            >Submit</button>
+          }
+
+          {(isNewTaskInputShown || isNewTaskSelectShown) &&
+            <button
+              className={css['button-column']}
+              onClick={() => state === 'backlog' ? setIsNewTaskInputShown(false) : setIsNewTaskSelectShown(false)}
+            >Hide</button>
+          }
         </div>
       </div>
-    </div>
+    </div >
   )
 };
