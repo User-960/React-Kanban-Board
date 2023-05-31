@@ -4,7 +4,7 @@ import css from './Button.module.scss';
 interface IButtonProps {
   className: string
   children: string | JSX.Element | JSX.Element[] | React.ReactNode
-  onClick: () => void
+  onClick: (e: React.MouseEvent<HTMLButtonElement>) => void
 };
 
 export default function Button({ className, children, onClick }: IButtonProps) {
