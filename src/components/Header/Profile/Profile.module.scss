@@ -5,7 +5,14 @@
   user-select: none;
   z-index: 100;
 
+  .profile-icon {
+    cursor: pointer;
+    margin-right: 10px;
+  }
+
   .chevron {
+    cursor: pointer;
+
     &.up>svg {
       transform: scaleY(-1);
     }

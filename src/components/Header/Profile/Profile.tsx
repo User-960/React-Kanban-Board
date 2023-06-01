@@ -7,7 +7,10 @@ export default function Profile() {
 
   return (
     <div className={css['profile']} onClick={() => setIsMenuShown(!isMenuShown)}>
-      <GlobalSvgSelector id="profile" />
+      <div className={css['profile-icon']}>
+        <GlobalSvgSelector id="profile" />
+      </div>
+
       <div className={`${css['chevron']} ${isMenuShown ? css['up'] : ''}`}>
         <GlobalSvgSelector id="chevron" />
       </div>
