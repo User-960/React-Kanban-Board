@@ -43,18 +43,25 @@ export default function Column({ name, state }: IColumnProps) {
 
           {isNewTaskInputShown &&
             <div>
-              <input className={css['input-column']} onChange={onInputCard} value={inputCardName} type="text" />
+              <input
+                className={css['input-column']}
+                onChange={onInputCard}
+                value={inputCardName}
+                type="text"
+                data-testid="column-input"
+              />
             </div>
           }
 
           {isNewTaskSelectShown &&
             <select
               className={css['select-column']}
+              data-testid="column-select"
               onChange={(e: React.ChangeEvent<HTMLSelectElement>) => setSelectedTaskId(e.target.value)}>
 
               <option>Select Task</option>
               {getTasksByExcludeState(state).map((task: ITask) =>
-                <option key={task.id} value={task.id}>{task.name}</option>
+                <option key={task.id} value={task.id} data-testid="column-select-option">{task.name}</option>
               )}
             </select>
           }
@@ -64,6 +71,7 @@ export default function Column({ name, state }: IColumnProps) {
           {(!isNewTaskInputShown && !isNewTaskSelectShown) &&
             <button
               className={css['button-column']}
+              data-testid={`${state}-button-add`}
               onClick={() => state === 'backlog' ? setIsNewTaskInputShown(true) : setIsNewTaskSelectShown(true)}
             >+ Add card</button>
           }
@@ -71,10 +79,14 @@ export default function Column({ name, state }: IColumnProps) {
           {(isNewTaskInputShown || isNewTaskSelectShown) &&
             <button
               className={css['button-column']}
+              disabled={inputCardName === ''}
+              data-testid={`${state}-button-submit`}
               onClick={() => {
                 if (state === 'backlog') {
                   setIsNewTaskInputShown(false);
-                  addTask(inputCardName);
+                  if (inputCardName) {
+                    addTask(inputCardName);
+                  }
                   setInputCardName('');
                 } else {
                   setIsNewTaskSelectShown(false);
