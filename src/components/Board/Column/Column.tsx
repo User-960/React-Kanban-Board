@@ -33,7 +33,7 @@ export default function Column({ name, state }: IColumnProps) {
         <div className={css.body}>
 
           {hasTasks &&
-            <Scrollbars autoHeight autoHeightMax={500}>
+            <Scrollbars autoHeight autoHeightMax={400}>
               {tasks.map((task: ITask) => <Card key={task.id} id={task.id} name={task.name} onRemove={(id) => removeTask(id)} />)}
             </Scrollbars>
           }
