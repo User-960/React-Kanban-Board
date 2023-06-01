@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Scrollbars from 'react-custom-scrollbars-2';
+import { useLayout } from '../../../hooks/layout/useLayout';
 import { useTasks } from '../../../hooks/tasks/useTasks';
 import { ITask } from '../../../models/models';
 import Card from './Card/Card';
@@ -17,6 +18,8 @@ export default function Column({ name, state }: IColumnProps) {
   const [isNewTaskSelectShown, setIsNewTaskSelectShown] = useState<boolean>(false);
   const [selectedTaskId, setSelectedTaskId] = useState<string>('');
 
+  const { mainContentHeight } = useLayout();
+
   const { getTasksByState, getTasksByExcludeState, addTask, moveTask, removeTask } = useTasks();
 
   const tasks = getTasksByState(state);
@@ -33,7 +36,7 @@ export default function Column({ name, state }: IColumnProps) {
         <div className={css.body}>
 
           {hasTasks &&
-            <Scrollbars autoHeight autoHeightMax={400}>
+            <Scrollbars autoHide autoHeight autoHeightMax={mainContentHeight - 120}>
               {tasks.map((task: ITask) => <Card key={task.id} id={task.id} name={task.name} onRemove={(id) => removeTask(id)} />)}
             </Scrollbars>
           }
