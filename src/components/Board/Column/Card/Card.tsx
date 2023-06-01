@@ -17,7 +17,7 @@ export default function Card({ id, name, onRemove }: ICardProps) {
   return (
     <div className={css.card} onClick={() => navigate(`/tasks/${id}`)}>
       <span>{name}</span>
-      <Button className={css['button-remove']} onClick={(e) => {
+      <Button className={css['button-remove']} onClick={(e: React.MouseEvent<HTMLButtonElement>) => {
         onRemove(id);
         e.stopPropagation();
       }}>

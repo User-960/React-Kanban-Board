@@ -71,7 +71,7 @@ export default function Column({ name, state }: IColumnProps) {
               onClick={() => {
                 if (state === 'backlog') {
                   setIsNewTaskInputShown(false);
-                  addTask(inputCardName, state);
+                  addTask(inputCardName);
                   setInputCardName('');
                 } else {
                   setIsNewTaskSelectShown(false);

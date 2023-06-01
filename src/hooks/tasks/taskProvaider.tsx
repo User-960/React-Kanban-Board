@@ -29,14 +29,17 @@ export const TaskProvaider = ({ children }: ITaskProvaiderProps) => {
   useEffect(() => {
     const tasks = localStorage.getItem('tasks');
     if (tasks) {
+
       setTasks(JSON.parse(tasks))
+      setIdCounter(JSON.parse(tasks).length)
+
     }
     setIsLoaded(true);
   }, []);
 
   const context = {
     states,
-    addTask: (name: string, state: string) => {
+    addTask: (name: string) => {
       const id = idCounter + 1
       const task: ITask = {
         id,
@@ -79,5 +82,5 @@ export const TaskProvaider = ({ children }: ITaskProvaiderProps) => {
     getFinishedTaskCount: () => tasks.filter(task => task.state === 'finished').length
   };
 
-  return <TaskContext.Provider value={context}>{children}</TaskContext.Provider>
+  return <TaskContext.Provider value={context}>{isLoaded && children}</TaskContext.Provider>
 };

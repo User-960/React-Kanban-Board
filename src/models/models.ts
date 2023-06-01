@@ -1,6 +1,6 @@
 export type TTaskContext = {
   states: IState[]
-  addTask: (name: string, state: string) => void
+  addTask: (name: string) => void
   updateTask: (item: ITask) => void
   removeTask: (id: number) => void
   getTaskById: (id: number) => void
