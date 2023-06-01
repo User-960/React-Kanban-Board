@@ -23,3 +23,12 @@ export interface IState {
   name: string
   state: string
 };
+
+export type TLayoutContext = {
+  mainContentHeight: number
+};
+
+export interface IWindowSize {
+  width: number
+  height: number
+};
