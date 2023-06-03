@@ -1,5 +1,5 @@
 .column {
-  width: 282px;
+  min-width: 282px;
   min-height: 210px;
   margin: 20px 24px 20px 0px;
 
@@ -32,7 +32,7 @@
       border: 1px solid #b8b8b8;
       border-radius: 12px;
       margin: 10px 0px;
-      padding: 6px 10px;
+      padding: 6px 16px;
       width: 100%;
     }
 

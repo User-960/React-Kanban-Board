@@ -79,13 +79,14 @@ export default function Column({ name, state }: IColumnProps) {
           {(isNewTaskInputShown || isNewTaskSelectShown) &&
             <button
               className={css['button-column']}
-              disabled={inputCardName === ''}
               data-testid={`${state}-button-submit`}
               onClick={() => {
                 if (state === 'backlog') {
                   setIsNewTaskInputShown(false);
-                  if (inputCardName) {
+                  if (inputCardName && inputCardName.trim() && inputCardName.length <= 44 && inputCardName.length > 0) {
                     addTask(inputCardName);
+                  } else {
+                    alert('INCORRECT TITLE OF TASK')
                   }
                   setInputCardName('');
                 } else {

@@ -29,10 +29,14 @@ export default function CardDetail() {
             className={css.name}
             value={task.name}
             onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) => {
-              setTask({
-                ...task,
-                name: e.target.value
-              })
+              if (e.target.value.length >= 0 && e.target.value.length <= 44) {
+                setTask({
+                  ...task,
+                  name: e.target.value
+                })
+              } else {
+                alert('INCORRECT TITLE OF TASK')
+              }
             }}
           />
 
