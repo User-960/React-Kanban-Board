@@ -29,7 +29,7 @@ export default function CardDetail() {
             className={css.name}
             value={task.name}
             onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) => {
-              if (e.target.value.length >= 0 && e.target.value.length <= 44) {
+              if (e.target.value.length >= 0 && e.target.value.length <= 42) {
                 setTask({
                   ...task,
                   name: e.target.value

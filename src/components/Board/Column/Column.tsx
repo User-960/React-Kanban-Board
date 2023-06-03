@@ -83,7 +83,7 @@ export default function Column({ name, state }: IColumnProps) {
               onClick={() => {
                 if (state === 'backlog') {
                   setIsNewTaskInputShown(false);
-                  if (inputCardName && inputCardName.trim() && inputCardName.length <= 44 && inputCardName.length > 0) {
+                  if (inputCardName && inputCardName.trim() && inputCardName.length <= 42 && inputCardName.length > 0) {
                     addTask(inputCardName);
                   } else {
                     alert('INCORRECT TITLE OF TASK')

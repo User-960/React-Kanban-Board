@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { quickSort } from "../../algorithms/quickSort";
 import { ITask, IState } from "../../models/models";
 import { TaskContext } from "./taskContext";
 
@@ -30,8 +31,11 @@ export const TaskProvaider = ({ children }: ITaskProvaiderProps) => {
     const tasks = localStorage.getItem('tasks');
     if (tasks) {
 
-      setTasks(JSON.parse(tasks))
-      setIdCounter(JSON.parse(tasks).length)
+      const sortedTasks = quickSort(JSON.parse(tasks))
+      setTasks(sortedTasks)
+
+      const lastTask: ITask = sortedTasks[sortedTasks.length - 1];
+      setIdCounter(lastTask.id);
 
     }
     setIsLoaded(true);
