@@ -12,6 +12,7 @@ The project allows you to make tasks, select the execution stage for tasks and e
 - Framework: React;
 - Preprocessor: SCSS;
 - Libraries: react-router-dom, react-custom-scrollbars-2, CSS Modules;
+- Algorithms: Quicksort algorithm with complexity O(n log n);
 
 ## To clone repository
 
